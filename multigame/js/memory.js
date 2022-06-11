@@ -23,37 +23,61 @@ function memory() {
 
 
 
-
     /* It's creating a button for each element in the array. It's creating a clone of the array. */
     for (var index = 0; index < memoryAnimals.length; index++) {
-        var img = document.createElement("img");
-        img.src = memoryAnimals[index].imageDefaut;
-        img.style.width = "100%"
+        var imgHidden = document.createElement("img");
+        imgHidden.src = memoryAnimals[index].imageDefaut;
+        imgHidden.style.width = "100%"
+        imgHidden.id = "img "+index
         var btn = document.createElement("BUTTON")
         var textBtn = document.createTextNode(index)
         btn.appendChild(textBtn)
         document.body.appendChild(btn)
-        btn.append(img)
+        btn.append(imgHidden)
         btn.id = memoryAnimals[index].id
         btn.style.width = "35%"
 
     }
 
 
-
-
+    var numClick = 0
+    var copie = [];
     var all_btn = document.querySelectorAll('button');
     all_btn.forEach(function (btn) {
-        btn.addEventListener("click", function () {
+        btn.addEventListener("click", function (e) {
+            numClick++
+            var imgView = document.createElement("img");
+            imgView.style.width = "100%"
             var idMemory = btn.getAttribute("id");
+            var element = document.getElementById("img "+btn.textContent);
+            var wordTest = "img "+btn.textContent
+            
+           
+           
+            copie.push(wordTest);
+             // eslint-disable-next-line no-console
+            console.log(copie)
+            if(numClick == 1 && element != null){
+            // eslint-disable-next-line no-console
+            console.log(numClick)
             // eslint-disable-next-line no-console
             console.log(idMemory)
             // eslint-disable-next-line no-console
             console.log(btn.textContent)
-            img.src = memoryAnimals[btn.textContent].image;
-            btn.append(img)
+            // eslint-disable-next-line no-console
+            console.log("img "+btn.textContent)
+            // eslint-disable-next-line no-console
+            console.log(element)
+            element.style.display = "none"
+            imgView.src = memoryAnimals[btn.textContent].image;
+            btn.append(imgView)
+            }else{
+                e.preventDefault
+            }
+            
+            
+            
         })
     });
-
 }
 memory()
