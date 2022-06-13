@@ -41,40 +41,34 @@ function memory() {
 
 
     var numClick = 0
-    var copie = [];
     var all_btn = document.querySelectorAll('button');
-    all_btn.forEach(function (btn) {
+    all_btn.forEach(function (btn,index) {
         btn.addEventListener("click", function (e) {
             numClick++
             var imgView = document.createElement("img");
             imgView.style.width = "100%"
             var idMemory = btn.getAttribute("id");
-            var element = document.getElementById("img "+btn.textContent);
             var wordTest = "img "+btn.textContent
-            
+            var element = document.getElementById(wordTest);
            
-           
-            copie.push(wordTest);
-             // eslint-disable-next-line no-console
-            console.log(copie)
-            if(numClick == 1 && element != null){
-            // eslint-disable-next-line no-console
-            console.log(numClick)
-            // eslint-disable-next-line no-console
-            console.log(idMemory)
-            // eslint-disable-next-line no-console
-            console.log(btn.textContent)
-            // eslint-disable-next-line no-console
-            console.log("img "+btn.textContent)
-            // eslint-disable-next-line no-console
-            console.log(element)
+
+            switch (numClick) {
+              case 1:
             element.style.display = "none"
             imgView.src = memoryAnimals[btn.textContent].image;
             btn.append(imgView)
-            }else{
+                break;
+              case 2:
+                element.style.display = "none"
+                imgView.src = memoryAnimals[btn.textContent].image;
+                btn.append(imgView)
+                
+                break
+              default:
                 e.preventDefault
+                break
+              
             }
-            
             
             
         })
