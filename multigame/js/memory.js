@@ -29,46 +29,37 @@ function memory() {
         imgHidden.src = memoryAnimals[index].imageDefaut;
         imgHidden.style.width = "100%"
         imgHidden.id = "img "+index
-        var btn = document.createElement("BUTTON")
+        var btnMemory = document.createElement("BUTTON")
         var textBtn = document.createTextNode(index)
-        btn.appendChild(textBtn)
-        document.body.appendChild(btn)
-        btn.append(imgHidden)
-        btn.id = memoryAnimals[index].id
-        btn.style.width = "35%"
+        btnMemory.appendChild(textBtn)
+        document.body.appendChild(btnMemory)
+        btnMemory.append(imgHidden)
+        btnMemory.id = memoryAnimals[index].id
+        btnMemory.className = index
+        btnMemory.style.width = "35%"
 
     }
 
 
-    var numClick = 0
-    var all_btn = document.querySelectorAll('button');
-    all_btn.forEach(function (btn,index) {
-        btn.addEventListener("click", function (e) {
-            numClick++
+   var checkResult = []
+    var all_btn_Memory = document.querySelectorAll('button');
+    all_btn_Memory.forEach(function (btnMemory,index) {
+        btnMemory.addEventListener("click", function (e) {
             var imgView = document.createElement("img");
             imgView.style.width = "100%"
-            var idMemory = btn.getAttribute("id");
-            var wordTest = "img "+btn.textContent
+            var idMemory = btnMemory.getAttribute("id");
+            var classMemory = btnMemory.getAttribute("class");
+            var wordTest = "img "+btnMemory.textContent
             var element = document.getElementById(wordTest);
-           
-
-            switch (numClick) {
-              case 1:
+            const collection = document.getElementsByClassName(btnMemory.textContent);
             element.style.display = "none"
-            imgView.src = memoryAnimals[btn.textContent].image;
-            btn.append(imgView)
-                break;
-              case 2:
-                element.style.display = "none"
-                imgView.src = memoryAnimals[btn.textContent].image;
-                btn.append(imgView)
-                
-                break
-              default:
-                e.preventDefault
-                break
+            collection[0].disabled = true
+            imgView.src = memoryAnimals[btnMemory.textContent].image;
+            btnMemory.append(imgView)
+            checkResult.push(idMemory)
+            console.log(checkResult)
               
-            }
+                e.preventDefault
             
             
         })
