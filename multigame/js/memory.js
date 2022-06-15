@@ -2,22 +2,22 @@
 function memory() {
     var memoryAnimals = [{
             id: "fruit",
-            image: "https://mesjoursferies.com/wp-content/uploads/sites/8/2020/03/date-jour-ferie-fete-travail-1170x694.jpg",
+            image: "https://www.le-panier-de-flo.fr/1769-thickbox_default/pitaya-rose-fruit-du-dragon-400g-la-piece.jpg",
             imageDefaut: "https://www.dcplanet.fr/wp-content/uploads/2021/12/og.jpg"
         },
         {
             id: "fruit",
-            image: "https://mesjoursferies.com/wp-content/uploads/sites/8/2020/03/date-jour-ferie-fete-travail-1170x694.jpg",
+            image: "https://www.le-panier-de-flo.fr/1769-thickbox_default/pitaya-rose-fruit-du-dragon-400g-la-piece.jpg",
             imageDefaut: "https://www.dcplanet.fr/wp-content/uploads/2021/12/og.jpg"
         },
         {
             id: "pizza",
-            image: "https://mesjoursferies.com/wp-content/uploads/sites/8/2020/03/date-jour-ferie-fete-travail-1170x694.jpg",
+            image: "https://cdnb.artstation.com/p/assets/images/images/033/443/005/large/dtxx-20191104-pizza.jpg?1609624047",
             imageDefaut: "https://www.dcplanet.fr/wp-content/uploads/2021/12/og.jpg"
         },
         {
             id: "pizza",
-            image: "https://mesjoursferies.com/wp-content/uploads/sites/8/2020/03/date-jour-ferie-fete-travail-1170x694.jpg",
+            image: "https://cdnb.artstation.com/p/assets/images/images/033/443/005/large/dtxx-20191104-pizza.jpg?1609624047",
             imageDefaut: "https://www.dcplanet.fr/wp-content/uploads/2021/12/og.jpg"
         }]
 
@@ -32,19 +32,19 @@ function memory() {
         var btnMemory = document.createElement("BUTTON")
         var textBtn = document.createTextNode(index)
         btnMemory.appendChild(textBtn)
-        document.body.appendChild(btnMemory)
         btnMemory.append(imgHidden)
         btnMemory.id = memoryAnimals[index].id
         btnMemory.className = index
         btnMemory.style.width = "35%"
-
+        document.body.appendChild(btnMemory)
     }
-
-
+   
    var checkResult = []
+   var numclick = 0
     var all_btn_Memory = document.querySelectorAll('button');
     all_btn_Memory.forEach(function (btnMemory,index) {
         btnMemory.addEventListener("click", function (e) {
+            numclick++
             var imgView = document.createElement("img");
             imgView.style.width = "100%"
             var idMemory = btnMemory.getAttribute("id");
@@ -57,7 +57,28 @@ function memory() {
             imgView.src = memoryAnimals[btnMemory.textContent].image;
             btnMemory.append(imgView)
             checkResult.push(idMemory)
-            console.log(checkResult)
+            for(var checkIndex = 0; checkIndex < checkResult.length; checkIndex++ ){
+                if(checkResult[checkIndex] === checkResult[checkIndex+1]){
+                   var buttonElement = document.querySelectorAll("#"+checkResult[checkIndex])
+                   for (var i = 0; i < buttonElement.length; i++) {
+                     buttonElement.item(i).style.display = "none"
+                    }
+                }else if( checkResult[checkIndex] !== checkResult[checkIndex+1] && checkResult[checkIndex+1] != null){
+                    console.log(numclick)
+                    
+                    switch (numclick) {
+                        case 2:
+                            location.reload()
+                            break;
+                        case memoryAnimals.length:
+                            location.reload()
+                            break;
+                        default:
+                            e.preventDefault
+                    }
+                }
+            }
+            
               
                 e.preventDefault
             
