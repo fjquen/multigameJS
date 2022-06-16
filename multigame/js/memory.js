@@ -21,8 +21,10 @@ function memory() {
             imageDefaut: "https://www.dcplanet.fr/wp-content/uploads/2021/12/og.jpg"
         }]
 
+    var divMemory = document.createElement("DIV")
+    divMemory.style.display = "flex"
 
-
+     document.body.appendChild(divMemory)
     /* It's creating a button for each element in the array. It's creating a clone of the array. */
     for (var index = 0; index < memoryAnimals.length; index++) {
         var imgHidden = document.createElement("img");
@@ -36,8 +38,15 @@ function memory() {
         btnMemory.id = memoryAnimals[index].id
         btnMemory.className = index
         btnMemory.style.width = "35%"
-        document.body.appendChild(btnMemory)
+        btnMemory.style.background ="rgba(255, 255, 255,0.4)"
+        btnMemory.style.borderColor = "rgba(255, 255, 255,0.4)"
+        btnMemory.style.color = "rgba(255, 255, 255,0.4)"
+       divMemory.appendChild(btnMemory)
+         const collectionFlex  = document.getElementsByClassName(btnMemory.textContent);
+         var random = Math.trunc(Math.random() * memoryAnimals.length)
+       collectionFlex[0].style.order = random
     }
+   
    
    var checkResult = []
    var numclick = 0
