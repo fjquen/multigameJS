@@ -46,8 +46,8 @@ function memory() {
          var random = Math.trunc(Math.random() * memoryAnimals.length)
        imgFlex[0].style.order = random
     }
-   
-   
+
+
    var checkResult = []
    var numclick = 0
     var all_btn_Memory = document.querySelectorAll('button');
@@ -73,7 +73,7 @@ function memory() {
                      buttonId.item(i).style.display = "none"
                     }
                 }else if( checkResult[checkIndex] !== checkResult[checkIndex+1] && checkResult[checkIndex+1] != null){
-                    
+
                     switch (numclick) {
                         case 2:
                             location.reload()
@@ -86,11 +86,11 @@ function memory() {
                     }
                 }
             }
-            
-              
+
+
                 e.preventDefault
-            
-            
+
+
         })
     });
 }

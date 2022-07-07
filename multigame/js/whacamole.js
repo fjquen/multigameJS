@@ -30,7 +30,7 @@ function whacamole() {
       btn.id=elementPlay
 
       for (var i = 0; i < moleTab.length; i++) {
-        var btnMole = document.createElement("BUTTON")
+        var btnMole = document.createElement("DIV")
         document.body.appendChild(btnMole)
         btnMole.id = moleTab[i].name
       }
@@ -54,12 +54,19 @@ var pointsMole = 0
           clearInterval(moleInterval)
         });
       });
-var all_btn_Memory = document.querySelectorAll('button');
+var all_btn_Memory = document.querySelectorAll('DIV');
 all_btn_Memory.forEach(function (btnMole) {
 btnMole.addEventListener("click", function(){
-    pointsMole++
-    console.log(btnMole)
-    console.log(pointsMole)
+console.log(btnMole.textContent)
+    if(btnMole.textContent !== ""){
+      pointsMole++
+      console.log(btnMole)
+      console.log(pointsMole)
+    }else {
+      pointsMole--
+      console.log(btnMole)
+      console.log(pointsMole)
+    }
   })
 })
 
