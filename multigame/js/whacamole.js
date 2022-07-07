@@ -1,23 +1,17 @@
 function whacamole() {
 
     var moleTab = [{
-        name: "moleStar",
-        hole: null
+        name: "moleStar"
     }, {
-        name: "molePingouin",
-        hole: null
+        name: "molePingouin"
     },{
-        name: "moleRyo",
-        hole: null
+        name: "moleRyo"
     }, {
-        name: "molePascal",
-        hole: null
+        name: "molePascal"
     },{
-        name: "moleMéteor",
-        hole: null
+        name: "moleMéteor"
     }, {
-        name: "moleScorpion",
-        hole: null
+        name: "moleScorpion"
     }]
 
 
@@ -37,29 +31,38 @@ function whacamole() {
 
       for (var i = 0; i < moleTab.length; i++) {
         var btnMole = document.createElement("BUTTON")
-        var textBtn = document.createTextNode("trou")
-        btnMole.appendChild(textBtn)
         document.body.appendChild(btnMole)
         btnMole.id = moleTab[i].name
       }
-
+var pointsMole = 0
       document.getElementById(elementPlay).addEventListener("click", function(){
         var moleInterval = setInterval(function() {  var numMole = Math.trunc(Math.random() * moleTab.length)
 
-          console.log(moleTab[numMole].name)
           document.getElementById(moleTab[numMole].name).textContent = moleTab[numMole].name
           var myTimeout = setTimeout(function(){
-            document.getElementById(moleTab[numMole].name).textContent = moleTab[numMole].hole
+            document.getElementById(moleTab[numMole].name).textContent = null
+
           }, 5000);
+
+          document.getElementById(elementPause).addEventListener("click", function(){
+            clearTimeout(myTimeout)
+          });
         }
         , 1000)
 
         document.getElementById(elementPause).addEventListener("click", function(){
           clearInterval(moleInterval)
         });
-
-
-
       });
+var all_btn_Memory = document.querySelectorAll('button');
+all_btn_Memory.forEach(function (btnMole) {
+btnMole.addEventListener("click", function(){
+    pointsMole++
+    console.log(btnMole)
+    console.log(pointsMole)
+  })
+})
+
+
 }
 whacamole()
