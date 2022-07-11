@@ -42,16 +42,16 @@ function memory() {
         btnMemory.style.borderColor = "rgba(255, 255, 255,0.4)"
         btnMemory.style.color = "rgba(255, 255, 255,0.4)"
        divMemory.appendChild(btnMemory)
-         const collectionFlex  = document.getElementsByClassName(btnMemory.textContent);
+         var imgFlex  = document.getElementsByClassName(btnMemory.textContent);
          var random = Math.trunc(Math.random() * memoryAnimals.length)
-       collectionFlex[0].style.order = random
+       imgFlex[0].style.order = random
     }
-   
-   
+
+
    var checkResult = []
    var numclick = 0
     var all_btn_Memory = document.querySelectorAll('button');
-    all_btn_Memory.forEach(function (btnMemory,index) {
+    all_btn_Memory.forEach(function (btnMemory) {
         btnMemory.addEventListener("click", function (e) {
             numclick++
             var imgView = document.createElement("img");
@@ -60,21 +60,20 @@ function memory() {
             var classMemory = btnMemory.getAttribute("class");
             var wordTest = "img "+btnMemory.textContent
             var element = document.getElementById(wordTest);
-            const collection = document.getElementsByClassName(btnMemory.textContent);
+            var imgBtn = document.getElementsByClassName(classMemory);
             element.style.display = "none"
-            collection[0].disabled = true
+            imgBtn[0].disabled = true
             imgView.src = memoryAnimals[btnMemory.textContent].image;
             btnMemory.append(imgView)
             checkResult.push(idMemory)
             for(var checkIndex = 0; checkIndex < checkResult.length; checkIndex++ ){
                 if(checkResult[checkIndex] === checkResult[checkIndex+1]){
-                   var buttonElement = document.querySelectorAll("#"+checkResult[checkIndex])
-                   for (var i = 0; i < buttonElement.length; i++) {
-                     buttonElement.item(i).style.display = "none"
+                   var buttonId = document.querySelectorAll("#"+checkResult[checkIndex])
+                   for (var i = 0; i < buttonId.length; i++) {
+                     buttonId.item(i).style.display = "none"
                     }
                 }else if( checkResult[checkIndex] !== checkResult[checkIndex+1] && checkResult[checkIndex+1] != null){
-                    console.log(numclick)
-                    
+
                     switch (numclick) {
                         case 2:
                             location.reload()
@@ -87,11 +86,11 @@ function memory() {
                     }
                 }
             }
-            
-              
+
+
                 e.preventDefault
-            
-            
+
+
         })
     });
 }
