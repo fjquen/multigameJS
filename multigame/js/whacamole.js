@@ -2,24 +2,25 @@ function whacamole() {
 
     var moleTab = [{
         name: "moleStar",
-        hole: false
+        img:"https://image.shutterstock.com/image-vector/mole-pixel-art-260nw-1255892164.jpg"
     }, {
         name: "molePingouin",
-        hole: false
+        img:"https://image.shutterstock.com/image-vector/vector-pixel-art-ghost-isolated-600w-675217390.jpg"
     },{
         name: "moleRyo",
-        hole: false
+        img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVOCJOvvo4TkUAFalpKzlEYMHnXIqtDI-27qn7YPLM-x4f4803CPMLt7M6Lz2CMYWebjs&usqp=CAU"
     }, {
         name: "molePascal",
-        hole: false
+        img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7oMeZJH7T9qAinDFDAfbfGSF8800OHH7hQII9MdO14OeSTKu1itTtOpCLQyA0LihbQyM&usqp=CAU"
     },{
         name: "moleMéteor",
-        hole: false
+        img:"http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/90eab71ec3e08c7.png"
     }, {
         name: "moleScorpion",
-        hole: false
+        img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk7TsD4OB1AycHszeylLQ7EuVOtSaJoPYLqS1AmenevQYC8w5QqP2RrBqtnCr3R-pudH0&usqp=CAU"
     }]
 
+    var square = []
 
       var elementPause = "pause"
       var btn = document.createElement("BUTTON")
@@ -36,24 +37,19 @@ function whacamole() {
       btn.id=elementPlay
 
       for (var i = 0; i < moleTab.length; i++) {
-        var btnMole = document.createElement("BUTTON")
-        var textBtn = document.createTextNode(moleTab[i].hole)
-        btnMole.appendChild(textBtn)
-        document.body.appendChild(btnMole)
-        btnMole.id = moleTab[i].name
+        var mole = document.createElement("DIV")
+        document.body.appendChild(mole)
+        mole.id = moleTab[i].name
       }
 
       document.getElementById(elementPlay).addEventListener("click", function(){
         var moleInterval = setInterval(function() {  var numMole = Math.trunc(Math.random() * moleTab.length)
-        moleTab[numMole].hole = true
-
-        if(moleTab[numMole].hole === true){
-          console.log(moleTab[numMole].name)
+          var moleImg = new Image(100, 200);
+          moleImg.src = moleTab[numMole].img
           document.getElementById(moleTab[numMole].name).textContent = moleTab[numMole].name
-        }}
+          document.getElementById(moleTab[numMole].name).appendChild(moleImg)
+        }
         , 1000)
-
-        console.log(moleInterval);
 
         document.getElementById(elementPause).addEventListener("click", function(){
           clearInterval(moleInterval)
