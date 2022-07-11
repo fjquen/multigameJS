@@ -97,6 +97,7 @@ function shifumi() {
       let all_btn = document.querySelectorAll('DIV');
       all_btn.forEach(function(btn) {
           btn.addEventListener("click", function() {
+            textHtml.innerHTML = ""
             arbitre(btn.textContent,3)
           });
       });
