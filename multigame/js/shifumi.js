@@ -1,16 +1,15 @@
-
 function shifumi() {
   var tabJanken = ["pierre","feuille","ciseau"]
 
   for (let index = 0; index < tabJanken.length; index++) {
     const element = tabJanken[index]
 
-    var btn = document.createElement("BUTTON")     
+    var btn = document.createElement("DIV")
     var textBtn = document.createTextNode(element)
     btn.appendChild(textBtn)
     document.body.appendChild(btn)
-    btn.id=element   
-    
+    btn.id=element
+
   }
 
   var textHtml = document.createElement("p")
@@ -19,9 +18,9 @@ function shifumi() {
 
 
   /**
-   * The function arbitre() is a function that takes two arguments, player and max. 
-   * The function will generate a random number between 0 and max. 
-   * The function will then compare the random number to the player's choice. 
+   * The function arbitre() is a function that takes two arguments, player and max.
+   * The function will generate a random number between 0 and max.
+   * The function will then compare the random number to the player's choice.
    * The function will then return the result of the comparison.
    * @param player - The player's choice.
    * @param max - The maximum number of elements in the array.
@@ -46,7 +45,7 @@ function shifumi() {
           }else{
             console.log("probleme")
           }
-        
+
         break;
       case "pierre":
           if(player === "pierre"){
@@ -67,7 +66,7 @@ function shifumi() {
           }else{
             console.log("probleme")
           }
-        
+
         break;
       case "ciseau":
           if(player === "pierre"){
@@ -88,17 +87,17 @@ function shifumi() {
           }else{
             console.log("probleme")
           }
-        
+
         break;
       default:
         console.log('erreur')
         break;
     }
   }
-      let all_btn = document.querySelectorAll('button');
+      let all_btn = document.querySelectorAll('DIV');
       all_btn.forEach(function(btn) {
           btn.addEventListener("click", function() {
-            arbitre(btn.textContent,3)            
+            arbitre(btn.textContent,3)
           });
       });
 }
