@@ -43,27 +43,27 @@ function whacamole() {
         div.appendChild(mole)
         div.style.display = "flex"
         mole.id = moleTab[i].name
-
       }
 
       document.getElementById(elementPlay).addEventListener("click", function(){
 
-        setInterval(() => { var numMole = Math.trunc(Math.random() * moleTab.length)
+      var moleInterval =  setInterval(() => {  var numMole = Math.trunc(Math.random() * moleTab.length)
           var moleImg = new Image(100, 200);
           moleImg.src = moleTab[numMole].img
           document.getElementById(moleTab[numMole].name).textContent = moleTab[numMole].name
           document.getElementById(moleTab[numMole].name).appendChild(moleImg)
-          setTimeout(() => {
-            document.getElementById(moleTab[numMole].name).textContent = ""
-          }, 5000)
+
         }
         , 1000)
 
-
+      var moleTimeout = setTimeout(() => {   var numMole = Math.trunc(Math.random() * moleTab.length)
+          document.getElementById(moleTab[numMole].name).textContent = ""
+        }, 15000)
 
         document.getElementById(elementPause).addEventListener("click", function(){
           clearInterval(moleInterval)
-        });
-      });
+          clearTimeout(moleTimeout)
+        })
+      })
 }
 whacamole()
