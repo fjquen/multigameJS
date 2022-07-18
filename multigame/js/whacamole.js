@@ -20,7 +20,6 @@ function whacamole() {
         img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk7TsD4OB1AycHszeylLQ7EuVOtSaJoPYLqS1AmenevQYC8w5QqP2RrBqtnCr3R-pudH0&usqp=CAU"
     }]
 
-    var square = []
 
       var elementPause = "pause"
       var btn = document.createElement("BUTTON")
@@ -36,20 +35,31 @@ function whacamole() {
       document.body.appendChild(btn)
       btn.id=elementPlay
 
+      var div = document.createElement("DIV")
+      document.body.appendChild(div)
+
       for (var i = 0; i < moleTab.length; i++) {
         var mole = document.createElement("DIV")
-        document.body.appendChild(mole)
+        div.appendChild(mole)
+        div.style.display = "flex"
         mole.id = moleTab[i].name
+
       }
 
       document.getElementById(elementPlay).addEventListener("click", function(){
-        var moleInterval = setInterval(function() {  var numMole = Math.trunc(Math.random() * moleTab.length)
+
+        setInterval(() => { var numMole = Math.trunc(Math.random() * moleTab.length)
           var moleImg = new Image(100, 200);
           moleImg.src = moleTab[numMole].img
           document.getElementById(moleTab[numMole].name).textContent = moleTab[numMole].name
           document.getElementById(moleTab[numMole].name).appendChild(moleImg)
+          setTimeout(() => {
+            document.getElementById(moleTab[numMole].name).textContent = ""
+          }, 5000)
         }
         , 1000)
+
+
 
         document.getElementById(elementPause).addEventListener("click", function(){
           clearInterval(moleInterval)
