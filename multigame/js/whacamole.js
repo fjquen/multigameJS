@@ -28,6 +28,8 @@ function whacamole() {
       document.body.appendChild(btn)
       btn.id=elementPause
 
+
+      var point = 0
       var elementPlay = "play"
       var btn = document.createElement("BUTTON")
       var textBtn = document.createTextNode(elementPlay)
@@ -53,6 +55,13 @@ function whacamole() {
           document.getElementById(moleTab[numMole].name).style.display = "flex"
           document.getElementById(moleTab[numMole].name).textContent = moleTab[numMole].name
           document.getElementById(moleTab[numMole].name).appendChild(moleImg)
+
+            document.getElementById(moleTab[numMole].name).addEventListener("click", function (e) {
+              document.getElementById(moleTab[numMole].name).style.display = "none"
+              point++
+              console.log(point)
+
+            })
           var moleTimeout = setTimeout(() => {   var numMole = Math.trunc(Math.random() * moleTab.length)
             document.getElementById(moleTab[numMole].name).style.display = "none"
             }, 1000)
