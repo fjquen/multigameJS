@@ -50,15 +50,16 @@ function whacamole() {
       var moleInterval =  setInterval(() => {  var numMole = Math.trunc(Math.random() * moleTab.length)
           var moleImg = new Image(100, 200);
           moleImg.src = moleTab[numMole].img
+          document.getElementById(moleTab[numMole].name).style.display = "flex"
           document.getElementById(moleTab[numMole].name).textContent = moleTab[numMole].name
           document.getElementById(moleTab[numMole].name).appendChild(moleImg)
-
+          var moleTimeout = setTimeout(() => {   var numMole = Math.trunc(Math.random() * moleTab.length)
+            document.getElementById(moleTab[numMole].name).style.display = "none"
+            }, 1000)
         }
         , 1000)
 
-      var moleTimeout = setTimeout(() => {   var numMole = Math.trunc(Math.random() * moleTab.length)
-          document.getElementById(moleTab[numMole].name).textContent = ""
-        }, 15000)
+
 
         document.getElementById(elementPause).addEventListener("click", function(){
           clearInterval(moleInterval)
