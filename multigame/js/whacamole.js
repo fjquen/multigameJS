@@ -56,12 +56,7 @@ function whacamole() {
           document.getElementById(moleTab[numMole].name).textContent = moleTab[numMole].name
           document.getElementById(moleTab[numMole].name).appendChild(moleImg)
 
-            document.getElementById(moleTab[numMole].name).addEventListener("click", function (e) {
-              document.getElementById(moleTab[numMole].name).style.display = "none"
-              point++
-              console.log(point)
 
-            })
           var moleTimeout = setTimeout(() => {   var numMole = Math.trunc(Math.random() * moleTab.length)
             document.getElementById(moleTab[numMole].name).style.display = "none"
             }, 1000)
@@ -73,6 +68,17 @@ function whacamole() {
         document.getElementById(elementPause).addEventListener("click", function(){
           clearInterval(moleInterval)
           clearTimeout(moleTimeout)
+        })
+      })
+
+
+      var all_Mole_Div = document.querySelectorAll('div');
+      all_Mole_Div.forEach(function (divMole) {
+        divMole.addEventListener("click",function () {
+          if(divMole.id){
+            point++
+            console.log(point)
+          }
         })
       })
 }
