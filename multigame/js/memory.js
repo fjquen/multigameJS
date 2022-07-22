@@ -79,6 +79,7 @@ function memory() {
                             location.reload()
                             break;
                         case memoryAnimals.length:
+                            alert("gagné")
                             location.reload()
                             break;
                         default:

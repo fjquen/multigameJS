@@ -30,6 +30,8 @@ function whacamole() {
 
 
       var point = 0
+      var divPoint = document.createElement("DIV")
+      document.body.appendChild(divPoint)
       var elementPlay = "play"
       var btn = document.createElement("BUTTON")
       var textBtn = document.createTextNode(elementPlay)
@@ -77,7 +79,10 @@ function whacamole() {
         divMole.addEventListener("click",function () {
           if(divMole.id){
             point++
-            console.log(point)
+            divPoint.textContent = point
+            if (point === 10) {
+              alert("gagné")
+            }
           }
         })
       })
